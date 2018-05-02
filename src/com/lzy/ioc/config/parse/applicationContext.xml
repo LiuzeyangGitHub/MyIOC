@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+	<bean name="beanA" class="com.lzy.ioc.test.BeanA">
+		<property name="beanB" ref="beanB"></property>
+	</bean>
+	
+	<bean name="beanB" class="com.lzy.ioc.test.BeanB">
+		<property name ="name" value="lzy"></property>
+	</bean>
+</beans>
