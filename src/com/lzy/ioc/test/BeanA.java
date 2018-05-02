@@ -12,8 +12,8 @@ public class BeanA {
 		return beanB;
 	}
 
-	/*public void setBeanB(BeanB beanB) {
+	public void setBeanB(BeanB beanB) {
 		this.beanB = beanB;
-	}*/
+	}
 	
 }

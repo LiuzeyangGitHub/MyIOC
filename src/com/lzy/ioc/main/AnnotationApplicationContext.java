@@ -94,13 +94,24 @@ public class AnnotationApplicationContext extends AbstraBeanFactory {
 						// 判断容器中是否有该bean
 						if(context.containsKey(fieldName)){
 							// 将容器中的值通过set方法注入到bean中
-							Method getMethod = BeanUtils.getWriteMethod(bean, fieldName);
+							/*
+							  //这里使用的是 set方法注入
+							  Method getMethod = BeanUtils.getWriteMethod(bean, fieldName);
 							try {
 								getMethod.invoke(bean, context.get(fieldName));
 							} catch (IllegalAccessException | IllegalArgumentException
 									| InvocationTargetException e) {
 								e.printStackTrace();
+							}*/
+							
+							// 不在依赖属性的set方法为属性注入值
+							try {
+								BeanUtils.setValue(bean, fieldName, context.get(fieldName));
+							} catch (IllegalArgumentException | IllegalAccessException | SecurityException
+									| NoSuchFieldException e) {
+								e.printStackTrace();
 							}
+							
 						
 						}
 					}else{
